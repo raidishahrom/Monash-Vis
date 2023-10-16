@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/raidishahrom/Monash-Vis/main/Data/Life-Expectancy-Data-Updated.csv"
+  },
+  "width": "container",
+  "height": 668,
+  "title": "Gross Domestic Product per Capita by Year for All Regions",
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "average", "field": "GDP_per_capita", "as": "avg_GDP_per_capita"}
+      ],
+      "groupby": ["Year", "Region"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2,
+        "point": true
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "title": "Year"},
+        "y": {"field": "avg_GDP_per_capita", "type": "quantitative", "title": "Gross Domestic Product per Capita", "scale": {"type": "log"}},
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+          }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal", "title": "Year"},
+          {"field": "Region", "type": "nominal", "title": "Region"},
+          {"field": "avg_GDP_per_capita", "type": "quantitative", "title": "Average Gross Domestic Product per Capita", "format": ".2f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+  }
+}

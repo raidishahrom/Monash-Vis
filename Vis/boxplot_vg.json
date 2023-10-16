@@ -1,0 +1,72 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Horizontal Box Plot for Unemployment Rates by Continent",
+    "data": {
+      "url": "https://raw.githubusercontent.com/raidishahrom/Monash-Vis/main/Data/world_data_2023.csv",
+      "format": {
+        "type": "csv"
+      }
+    },
+    "transform": [
+      {"filter": "datum.Continent !== null && datum.Continent !== ''"}
+    ],
+    "width": 1000,
+    "height": 500,
+    "layer": [
+      {
+        "mark": {
+          "type": "boxplot",
+          "extent": "min-max"
+        },
+        "encoding": {
+          "x": {
+            "field": "Continent",
+            "type": "nominal",
+            "title": "Continent",
+            "axis": {"labelAngle": -20}
+          },
+          "y": {
+            "field": "Unemployment_Rate",
+            "type": "quantitative",
+            "title": "Unemployment Rate",
+            "scale": {"domain": [0, 30]}
+          },
+          "color": {
+            "field": "Continent",
+            "type": "nominal"
+          },
+          "tooltip": [
+            {"field": "Continent", "title": "Continent"},
+            {"field": "Unemployment_Rate", "title": "Unemployment Rate"}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "tooltip": true,
+          "filled": true,
+          "opacity": 1
+        },
+        "encoding": {
+          "x": {
+            "field": "Continent",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "Unemployment_Rate",
+            "type": "quantitative",
+            "title": "Unemployment Rate",
+            "scale": {"domain": [0, 20]}
+          },
+          "color": {
+            "field": "Continent",
+            "type": "nominal",
+            "legend": null
+          }
+        }
+      }
+    ],
+    "config": {}
+  }
+  

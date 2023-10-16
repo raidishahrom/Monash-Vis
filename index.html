@@ -34,7 +34,7 @@
     <div class="pure-g">
       <div class="pure-u-1-1">
         <h1>World Data 2023</h1>
-        <p id="introText">This visualization seeks to inform the viewer regarding world data using visualizations</p>
+        <p id="introText">This visualization seeks to inform the viewer regarding the world </p> <p id="introText">and its continents, regions and countries and statistics between them.</p>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -42,9 +42,10 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h2 id="reg_h">Infant Mortality of the World per 1000</h2>
+        <h2 id="reg_h">Infant Mortality of the World per 1000 Population</h2>
         <div id="chloropeth_map" class="vis-container"></div>
-        <p>The chloropeth map above shows the differences in infant mortality rates around the world. </p>
+        <p>Sub-Saharan Africa has the <b>highest</b> infant mortality rate at </p> <p><b>43%</b> while the <b>lowest</b> is Antartica with an infant mortality rate of <b>0%</b></p>
+
       </div>
     </div>
     <!-- end pure grid group -->
@@ -52,9 +53,9 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h2 id="reg_h">Birth Rate vs. Infant Mortality of Each Country</h2>
+        <h2 id="reg_h">Birth Rate vs. Infant Mortality of Each Continent</h2>
         <div id="scatter_plot" class="vis-container"></div>
-        <p>This visualization shows a scatterplot of Birth Rate against Infant Mortality for each country. Furthermore, a filter is provided to filter through continent.</p>
+        <p>Generally, most countries show a <b>positive</b> correlation between  </p> <p><b>Infant Mortality</b> and <b>Birth Rate</b>, with the African continent having a stronger relation</p>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -65,20 +66,21 @@
         <div>
           <h2 id="reg_h">Languages of the World</h2>
           <div id="radial" class="vis-container"></div>
-          <p>The visualization above shows the top languages used around the world</p>
+          <p>The most spoken language is <b>English</b> with <b>31</b> countries having </p><p>English as their primary language, followed by <b>French</b> at <b>25</b> countries.</p>
         </div>
       </div>
 
     <!-- pure grid group -->
-    <div class="pure-g">
+    <div class="pure-g" style="width: 100%">
       <div class="pure-u-1-1">
         <div>
-          <h2 id="reg_h">Tertiary % vs Primary Enrollment % and Unemployment Rate %</h2>
-          
-          <div id="bubble" class="vis-container"></div>
-          <p>The above visualization shows a bubble graph with the tertiary and primary enrollment percentages of each country, alongside the size of the bubble chart determined by the countries unemployement rate</p>
+          <h2 id="reg_h"  style="width: 100%">Unemployment Rate in Each Continent</h2>
+          <div id="box" class="vis-container" style="margin: 0 auto; text-align: center;"></div>
+          <p>The <b>Middle Eastern</b> continent shows the <b>widest</b> spread in regards to unemployment</p> <p>whereas <b>Africa</b> has the <b>greatest</b> number of <b>outliers</b></p>
         </div>
       </div>
+
+
 
         
       </div>
@@ -86,7 +88,35 @@
     <!-- end pure grid group -->
 
 
+        <!-- pure grid group -->
+        <div class="pure-g">
+          <div class="pure-u-1-2">
+            <div>
+              <h2 id="half_h">Average Years of Schooling</h2>
+              <div id="bar" class="vis-container"></div>
+              <p>The continent with the <b>highest average Years of Schooling</b> is <b>European Union.</b></p> <p>The continent with the <b>lowest average Years of Schooling</b> is <b>Middle East</b>. </p>
+            </div>
+          </div>
+  
+          <div class="pure-u-1-2">
+            <div>
+                <h2 id="half_h">Gross Domestic Product</h2>
+                <div id="line" class="vis-container"></div>
+                <p>The continent with the <b>highest Gross Domestic Product</b> is <b>North America</b>.</p><p>The continent with the <b>lowest Gross Domestic Product</b> is <b>Africa</b>.</p>
+            </div>
+            
+          </div>
+        </div>
+        <!-- end pure grid group -->
 
+
+        <div class="pure-g">
+          <div class="pure-u-1-1 small-font">
+            <div>
+              <p>Biblography: Elgiriyewithana, N. (2023, July 8). Global Country Information Dataset 2023. Kaggle. https://www.kaggle.com/datasets/nelgiriyewithana/countries-of-the-world-2023 </p>
+              </p>
+            </div>
+          </div>
   
 
 
@@ -106,9 +136,9 @@
     var vis1 = "Vis/map_vg.json";
     var vis2 = "Vis/scatter_plot_vg.json";
     var vis3 = "Vis/radial_vg.json";
-    var vis4 = "Vis/bubble_chart_vg.json";
-    var vis5 = "js/idiom5_vg.json";
-    var vis6 = "js/idiom6_vg.json";
+    var vis4 = "Vis/bar_chart_vg.json";
+    var vis5 = "Vis/boxplot_vg.json";
+    var vis6 = "Vis/line_vg.json";
 
     vegaEmbed('#chloropeth_map', vis1, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
@@ -122,7 +152,15 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#bubble', vis4, { "actions": false }).then(function (result) {
+    vegaEmbed('#bar', vis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#box', vis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#line', vis6, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 

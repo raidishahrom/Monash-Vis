@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/raidishahrom/Monash-Vis/main/Data/Life-Expectancy-Data-Updated.csv"
+  },
+  "width": "container",
+  "height": 600,
+  "title": "Number of Average Years of Schooling for Each Individual in Region",
+  "params": [
+    {
+      "name": "Year_Selection",
+      "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2015,
+        "step": 1,
+        "name": "Year Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "Year_Selection == null || datum.Year == Year_Selection"},
+    {
+      "aggregate": [
+        {"op": "average", "field": "Alcohol_consumption", "as": "Schooling"}
+      ],
+      "groupby": ["Region"]
+    },
+    {"calculate": "datum['Schooling']", "as": "Schooling_num"},
+    {"calculate": "datum['Schooling'] + ' years'", "as": "Schooling_label"}
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Region", "type": "nominal", "sort": "-y", "axis": {"labelAngle": -20}},
+        "y": {"field": "Schooling_num", "type": "quantitative", "title": "Average Years of Schooling"},
+        "color": {"field": "Region", "type": "nominal", "legend": null},
+        "tooltip": [
+          {"field": "Region", "type": "nominal", "title": "Region"},
+          {
+            "field": "Schooling_label",
+            "type": "nominal",
+            "title": "Average Schooling Years"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 12
+      },
+      "encoding": {
+        "x": {"value": 490},
+        "y": {"value": 120},
+        "text": {
+          "value": "European Union consistently has the highest average years of schooling years"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {"value": 500},
+        "y": {"value": 200},
+        "text": {
+          "value": "Middle East consistently has the lowest average years of schooling years"
+        }
+      }
+    }
+  ],
+  "config": {}
+}

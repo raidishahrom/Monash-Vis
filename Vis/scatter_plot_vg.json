@@ -159,7 +159,6 @@
       }
     ], 
     "config": {
-      "view": {"stroke": "transparent"},
-      "background": "#FFFDF4"
+      "view": {"stroke": "transparent"}
     }
   }

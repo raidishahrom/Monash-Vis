@@ -45,8 +45,6 @@ p {
 	line-height: 25px;
 }
 
-
-
 h2 {
 	font-size: 35px;
 	color: #404040;
@@ -63,8 +61,19 @@ h2 {
 	background-color: #D3D3D3;
 }
 
+#half_h {
+	background-color: #D3D3D3;
+}
+
 #scatter {
 	width: 100%;
 	background-color: #D3D3D3;
 }
 
+#radialH2 {
+	background-color: #d1d1e2;
+}
+
+#vertH2 {
+	background-color: #f7e2e2;
+}
